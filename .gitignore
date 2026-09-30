@@ -1,0 +1,25 @@
+# Android / Gradle
+*.iml
+.gradle/
+build/
+local.properties
+.idea/
+.kotlin/
+captures/
+.externalNativeBuild/
+.cxx/
+.DS_Store
+
+# Mantener el wrapper de Gradle
+!gradle/wrapper/gradle-wrapper.jar
+
+# Python
+__pycache__/
+*.pyc
+
+# Datos de la Raspberry Pi
+pi/videos/
+videos/
+calibracion.json
+*.csv
+*.db

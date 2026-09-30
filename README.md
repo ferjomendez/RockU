@@ -1,4 +1,8 @@
-# RockU: monitoreo de correas transportadoras
+<p align="center">
+  <img src="docs/img/logo.png" width="300" alt="Logo de RockU">
+</p>
+
+<h1 align="center">RockU: monitoreo de correas transportadoras</h1>
 
 Prototipo a escala de un sistema de monitoreo para correas transportadoras de minería en Latinoamérica. Detecta tres situaciones que suelen causar detenciones no planificadas:
 

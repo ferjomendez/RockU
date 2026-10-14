@@ -4,6 +4,9 @@ Placa de control del motor paso a paso de la correa transportadora a escala (Tal
 
 Este documento explica dónde va cada componente en la perfboard, qué se conecta con qué y por qué. Modelo 3D en Fusion: `Perfboard controlador motor`.
 
+- Vista 3D interactiva (se abre en GitHub): [Perfboard controlador motor.stl](Perfboard%20controlador%20motor.stl). Sin colores y sin los pads de cobre, para que pese menos de 10 MB.
+- Modelo editable para Fusion: [Perfboard controlador motor.f3d](Perfboard%20controlador%20motor.f3d) (File > Open > Open from my computer).
+
 ![Vista general](img/01_vista_general.png)
 
 ## Componentes
@@ -174,3 +177,7 @@ Si alguna falla, no energizar hasta corregirla.
 
 - La separación entre las dos filas de pines de la TTGO se tomó como 27.94 mm (11 agujeros), porque la placa ocupa de la fila "a" a la "j" en una protoboard estándar. El modelo 3D del fabricante indica 26.46 mm. Antes de soldar S3 y S4, presentarlos con la TTGO puesta.
 - Interruptor de 12 V en el cable + (opcional, para la caja).
+
+## Modelos de terceros
+
+El archivo `.f3d` ya incluye los modelos de la TTGO T-Call, del driver A4988 y del condensador, descargados de terceros. Esos modelos originales no se redistribuyen en este repositorio.

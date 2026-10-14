@@ -23,3 +23,6 @@ videos/
 calibracion.json
 *.csv
 *.db
+
+# Modelos de terceros (no se suben)
+3D models/

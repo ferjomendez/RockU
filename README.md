@@ -6,9 +6,9 @@
 
 Prototipo a escala de un sistema de monitoreo para correas transportadoras de minería en Latinoamérica. Detecta tres situaciones que suelen causar detenciones no planificadas:
 
-- Correa detenida
-- Desalineación lateral
-- Paso de un objeto o piedra
+- Correa detenida.
+- Desalineación lateral.
+- Paso de un objeto o piedra.
 
 Proyecto del Taller de Innovación (UAI). Esta es la parte técnica del prototipo: visión por computador sobre una correa a escala, con un teléfono Android como cámara y una Raspberry Pi como nodo de análisis.
 

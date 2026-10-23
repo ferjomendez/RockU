@@ -1,0 +1,17 @@
+# Servicio de ejemplo para la Raspberry Pi. Copiar a /etc/systemd/system/rockU.service
+# y activar con:  sudo systemctl enable --now rockU
+# Ajusta User, WorkingDirectory y la URL del telefono segun tu instalacion.
+[Unit]
+Description=RockU, monitoreo de correa transportadora
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=fer
+WorkingDirectory=/home/fer/correa
+ExecStart=/usr/bin/python3 servidor.py --fuente real --telefono http://192.168.1.84:8080 --calibracion calibracion.json
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -41,7 +41,8 @@ En la demo final la Pi actúa como punto de acceso WiFi, con IPs fijas para el t
 | Scripts de grabación y análisis offline, con simulador de correa | Listo, probado con imágenes sintéticas |
 | Prueba con la correa real y ajuste de umbrales | Pendiente |
 | Integración captura, análisis, estados y SQLite | Pendiente |
-| Panel web Flask, pantalla 3.5" en modo kiosco, exportación CSV | Pendiente |
+| Panel web, pantalla 3.5" y simulador en el navegador | Listo |
+| Servidor Flask con API, SSE, SQLite y exportación CSV | Listo, probado con simulador y teléfono falso |
 | Firmware ESP32 con HC-SR04 y eventos | Pendiente |
 | Pi como punto de acceso WiFi | Pendiente |
 
@@ -63,6 +64,11 @@ pi/             Código para la Raspberry Pi (Python)
   analizar.py     Modos medir, calibrar y evaluar sobre grabaciones
   simulador.py    Genera correas sintéticas para probar los algoritmos
   test_sintetico.py  Suite de pruebas con imágenes sintéticas
+  servidor.py     Servidor Flask: API, stream SSE, panel y CSV
+  fuentes.py      Fuente simulada y fuente real (teléfono, detector, ESP32)
+  registro.py     Registro SQLite y exportación CSV
+  test_servidor.py  Pruebas del servidor
+  dashboard/      Panel web y pantalla de 3.5"
 docs/           Plan del sistema (plan_sistema_deteccion.md)
 ```
 
@@ -132,6 +138,41 @@ python3 test_sintetico.py
 ```
 
 Genera 11 escenarios sintéticos (distintas velocidades, detenida, desalineaciones, transición entre estados), calibra y evalúa. Requiere `numpy` y `opencv-python`.
+
+### 5. Servidor web, panel y pantalla
+
+El servidor Flask (`pi/servidor.py`) sirve el panel (`pi/dashboard/`), la API, el stream en vivo (SSE) y las exportaciones CSV. Registra muestras y eventos en SQLite. La API está en [`docs/api.md`](docs/api.md).
+
+```bash
+pip install -r pi/requirements.txt        # en la Pi: sudo apt install python3-flask python3-opencv python3-numpy python3-requests
+cd pi
+
+# Simulador, sin teléfono ni correa (panel en http://IP_DE_LA_PI:5000/)
+python3 servidor.py --fuente sim
+
+# Correa real: teléfono con CorreaCam, ESP32 y calibración guardada
+python3 servidor.py --fuente real --telefono http://192.168.1.84:8080 --calibracion calibracion.json
+```
+
+- Panel completo: `http://IP_DE_LA_PI:5000/`. Pantalla de 3.5": `http://localhost:5000/mini`.
+- Sin `calibracion.json` la fuente real parte en `CALIBRANDO`. Con la correa en condición normal, pulsa Calibrar en el panel o en la pantalla: mide unos segundos, guarda el archivo y sigue sola.
+- El ESP32 avisa los objetos con `POST /event` y el cuerpo `{"distancia_mm": 74, "n": 12}`. La Pi pide una foto al teléfono en ese instante y la guarda en `fotos/`.
+- Exportación: `/export/eventos.csv` y `/export/muestras.csv`, con `?desde=<ms>&hasta=<ms>&sep=;`. UTF-8 con BOM, para abrir directo en Excel.
+- La base de datos queda en `rockU.db` (en sim, `rockU_sim.db`). Se conservan 30 días de muestras (`--dias-muestras`).
+- Pruebas: `python3 pi/test_servidor.py`.
+
+**Pantalla en modo kiosco (Raspberry Pi OS con labwc).** Agrega esta línea a `~/.config/labwc/autostart`:
+
+```bash
+chromium --kiosk --noerrdialogs --disable-infobars --check-for-update-interval=31536000 http://localhost:5000/mini &
+```
+
+Con escritorio X11 (`~/.config/lxsession/LXDE-pi/autostart`), la misma línea con `@` al inicio. Para que el servidor arranque solo, usa el servicio de ejemplo [`docs/rockU.service`](docs/rockU.service):
+
+```bash
+sudo cp docs/rockU.service /etc/systemd/system/
+sudo systemctl enable --now rockU
+```
 
 ## Resultados con imágenes sintéticas
 

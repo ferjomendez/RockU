@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Panel RockU</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17h12l-1.5-2.2V10a4.5 4.5 0 0 0-9 0v4.8L6 17Zm4 2.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bell-off" viewBox="0 0 24 24"><path d="M6 17h12l-1.5-2.2V10a4.5 4.5 0 0 0-7.6-3.2M10 19.5a2 2 0 0 0 4 0M4 4l16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v10m0 0-4-4m4 4 4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9m4 0h3M4 17h3m4 0h9M13 7a2 2 0 1 0 4 0 2 2 0 0 0-4 0ZM7 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><path d="M4 9V5h4M16 5h4v4M20 15v4h-4M8 19H4v-4M12 9v6M9 12h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-screen" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="11.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 20h6M12 16.5V20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A7.5 7.5 0 0 1 9.5 4.5a7.5 7.5 0 1 0 10 10Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 18h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 3v3m6-3v3M9 18v3m6-3v3M3 9h3m-3 6h3m12-6h3m-3 6h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="12" r="1.6" fill="currentColor"/><path d="M12.5 12h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#" aria-label="RockU, monitoreo de correas">
+      <svg class="mark" viewBox="0 0 120 66" aria-hidden="true">
+        <g class="m-rock"><polygon points="8,40 14,26 30,20 42,28 40,42" /><polygon class="f" points="14,26 30,20 28,32 18,36" /></g>
+        <g class="m-rock"><polygon points="86,40 92,24 106,22 114,32 110,42" /><polygon class="f" points="92,24 106,22 100,32" /></g>
+        <polygon class="m-blue" points="47,38 50,17 66,9 81,17 79,36 63,42" />
+        <polygon class="m-blue-f" points="50,17 66,9 64,24 54,28" />
+        <polygon class="m-blue-f2" points="66,9 81,17 76,26 64,24" />
+        <path class="m-br" d="M42 12V3h9M76 3h9v9M85 36v9h-9M51 45h-9v-9" />
+        <rect class="m-belt" x="4" y="44" width="112" height="19" rx="9.5" />
+        <g class="m-wheel"><circle cx="19" cy="53.5" r="5.6"/><circle cx="46" cy="53.5" r="5.6"/><circle cx="74" cy="53.5" r="5.6"/><circle cx="101" cy="53.5" r="5.6"/></g>
+      </svg>
+      <span class="word">Rock<span>U</span></span>
+      <span class="brand-sub"><b>Correa C-01</b>Monitoreo en tiempo real</span>
+    </a>
+
+    <div class="top-actions">
+      <span class="alarm" id="alarm" hidden><svg class="ico"><use href="#i-bell"/></svg><span id="alarmText">Alarma activa</span></span>
+      <span class="clock" id="clock" aria-label="Hora"></span>
+      <span class="mode" title="Datos generados por el simulador"><i></i>Simulador</span>
+      <button class="btn" id="btnCal" type="button"><svg class="ico"><use href="#i-target"/></svg><span>Calibrar</span></button>
+      <button class="btn" id="btnMute" type="button" aria-pressed="false"><svg class="ico"><use href="#i-bell-off"/></svg><span>Silenciar alarma</span></button>
+      <button class="btn" id="btnCsv" type="button"><svg class="ico"><use href="#i-down"/></svg><span>Exportar CSV</span></button>
+      <a class="btn ghost" id="btnMini" href="mini.html" title="Vista de la pantalla de 3.5 pulgadas"><svg class="ico"><use href="#i-screen"/></svg><span>Pantalla Pi</span></a>
+      <button class="btn primary" id="btnSim" type="button" aria-expanded="false" aria-controls="drawer"><svg class="ico"><use href="#i-sliders"/></svg><span>Simulador</span></button>
+      <button class="btn icon" id="btnTheme" type="button" aria-label="Cambiar tema"><svg class="ico"><use href="#i-moon"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+
+    <!-- Cámara -->
+    <section class="cam" aria-label="Vista de la cámara">
+      <canvas id="scene" aria-label="Vista cenital de la correa transportadora"></canvas>
+      <div class="cam-tag"><svg class="ico"><use href="#i-phone"/></svg>Cámara cenital <b id="camRes">1080x1440</b></div>
+      <div class="cam-meta"><span id="camFps">14,6 fps</span><span id="camLat">70 ms</span></div>
+      <div class="cam-state" id="camState" data-tone="ok"><i></i><span id="camStateTxt">Normal</span></div>
+    </section>
+
+    <!-- Estado -->
+    <section class="state" id="state" data-tone="ok" aria-live="polite">
+      <div class="state-head">
+        <div class="state-kicker">Estado de la correa</div>
+        <div class="state-name"><i class="pulse"></i><span id="stName">Normal</span></div>
+        <p class="state-text" id="stText">La correa avanza y los bordes están dentro de los límites.</p>
+        <div class="state-time"><span id="stSince">00:00</span><em>en este estado</em></div>
+      </div>
+      <div class="confirm" id="confirm">
+        <div class="confirm-top"><span id="confirmTxt">Estado confirmado</span><b id="confirmN"></b></div>
+        <div class="confirm-bar"><i id="confirmFill"></i></div>
+      </div>
+      <ol class="machine" id="machine"></ol>
+    </section>
+
+    <!-- Indicadores -->
+    <section class="kpis" aria-label="Indicadores">
+      <article class="kpi" id="kVel">
+        <header><h3>Velocidad</h3><span class="chip" id="kVelChip">En rango</span></header>
+        <div class="kpi-val"><b id="vVel">10,0</b><span>cm/s</span></div>
+        <div class="scale" id="sVel"><i class="zone" style="left:33.3%;width:66.7%"></i><i class="mk" id="mVel"></i></div>
+        <div class="scale-lab"><span>0</span><span>5</span><span>10</span><span>15</span></div>
+      </article>
+      <article class="kpi" id="kLat">
+        <header><h3>Desvío lateral</h3><span class="chip" id="kLatChip">En rango</span></header>
+        <div class="kpi-val"><b id="vLat">+0,0</b><span>mm</span></div>
+        <div class="scale" id="sLat"><i class="zone bad" style="left:0;width:25%"></i><i class="zone bad" style="right:0;width:25%"></i><i class="center"></i><i class="mk" id="mLat"></i></div>
+        <div class="scale-lab"><span>-16</span><span>-8</span><span>0</span><span>8</span><span>16</span></div>
+      </article>
+      <article class="kpi" id="kAng">
+        <header><h3>Ángulo</h3><span class="chip" id="kAngChip">En rango</span></header>
+        <div class="kpi-row">
+          <div class="kpi-val"><b id="vAng">+0,0</b><span>grados</span></div>
+          <svg class="dial" viewBox="0 0 120 70" aria-hidden="true">
+            <path class="d-bad" d="M10 62 A50 50 0 0 1 30.6 21.5" />
+            <path class="d-bad" d="M89.4 21.5 A50 50 0 0 1 110 62" />
+            <path class="d-track" d="M10 62 A50 50 0 0 1 110 62" />
+            <g id="needle"><line x1="60" y1="62" x2="60" y2="20" /><circle cx="60" cy="62" r="5" /></g>
+          </svg>
+        </div>
+        <div class="scale-lab dial-lab"><span>-5</span><span>0</span><span>5</span></div>
+      </article>
+      <article class="kpi" id="kDist">
+        <header><h3>Sensor de distancia</h3><span class="chip" id="kDistChip">Correa vacía</span></header>
+        <div class="kpi-val"><b id="vDist">120</b><span>mm</span></div>
+        <div class="scale" id="sDist"><i class="zone bad" style="left:0;width:55%"></i><i class="base" style="left:80%"></i><i class="mk" id="mDist"></i></div>
+        <div class="scale-lab abs"><span style="left:0">40</span><span class="mid" style="left:80%">Base 120</span><span style="right:0">140</span></div>
+      </article>
+    </section>
+
+    <!-- Gráficos -->
+    <section class="charts panel">
+      <header class="p-head">
+        <h2>Últimos 5 minutos</h2>
+        <div class="legend"><span><i class="lg-line"></i>Medida</span><span><i class="lg-limit"></i>Límite</span><span><i class="lg-band"></i>Fuera de lo normal</span></div>
+      </header>
+      <div class="chart-box"><canvas id="chart"></canvas><div class="tip" id="tip" hidden></div></div>
+    </section>
+
+    <div class="side">
+      <section class="panel avail">
+        <header class="p-head"><h2>Disponibilidad, última hora</h2></header>
+        <div class="avail-main"><b id="avPct">100</b><span>%</span><em>del tiempo avanzando</em></div>
+        <dl class="avail-list">
+          <div><dt>Detenciones</dt><dd id="avDet">0</dd></div>
+          <div><dt>Tiempo detenido</dt><dd id="avStop">00:00</dd></div>
+          <div><dt>Entre detenciones</dt><dd id="avMtbf">sin datos</dd></div>
+          <div><dt>Objetos detectados</dt><dd id="avObj">0</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel health">
+        <header class="p-head"><h2>Conexiones</h2></header>
+        <ul class="hl">
+          <li id="hPhone" data-tone="ok">
+            <svg class="ico"><use href="#i-phone"/></svg>
+            <div><b>Teléfono, CorreaCam</b><small id="hPhoneTxt">192.168.1.84, 14,6 fps</small></div>
+            <span class="chip" id="hPhoneChip">En línea</span>
+          </li>
+          <li id="hEsp" data-tone="ok">
+            <svg class="ico"><use href="#i-chip"/></svg>
+            <div><b>ESP32, HC-SR04</b><small id="hEspTxt">192.168.1.86, último evento hace 7 min</small></div>
+            <span class="chip" id="hEspChip">En línea</span>
+          </li>
+          <li id="hPi" data-tone="ok">
+            <svg class="ico"><use href="#i-board"/></svg>
+            <div><b>Raspberry Pi 4</b><small><span id="hCpu">CPU 31%</span>, <span id="hTemp">53 °C</span></small></div>
+            <span class="chip" id="hPiChip">En línea</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Línea de tiempo -->
+    <section class="panel timeline">
+      <header class="p-head">
+        <h2>Línea de tiempo, última hora</h2>
+        <div class="shares" id="shares"></div>
+      </header>
+      <div class="tl-bar" id="tlBar" role="img" aria-label="Estados de la correa en la última hora"></div>
+      <div class="tl-axis" id="tlAxis"></div>
+    </section>
+
+    <!-- Eventos -->
+    <section class="panel events">
+      <header class="p-head">
+        <h2>Registro de eventos</h2>
+        <div class="filters" id="filters" role="group" aria-label="Filtrar eventos">
+          <button type="button" class="f on" data-f="ALL">Todos <b id="cAll">0</b></button>
+          <button type="button" class="f" data-f="DETENIDA">Detenida <b id="cDET">0</b></button>
+          <button type="button" class="f" data-f="DESALINEADA">Desalineada <b id="cDES">0</b></button>
+          <button type="button" class="f" data-f="OBJETO_DETECTADO">Objeto <b id="cOBJ">0</b></button>
+          <button type="button" class="f" data-f="SIN_SENAL">Sin señal <b id="cOFF">0</b></button>
+        </div>
+      </header>
+      <div class="ev-scroll">
+        <table class="ev">
+          <thead><tr><th>Evidencia</th><th>Hora</th><th>Evento</th><th>Detalle</th><th class="r">Medida</th><th class="r">Duración</th></tr></thead>
+          <tbody id="evBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+  <footer class="foot">RockU, Taller de Innovación UAI. Los datos de esta vista son simulados.</footer>
+</main>
+
+<!-- Simulador -->
+<aside class="drawer" id="drawer" aria-label="Controles del simulador" hidden>
+  <header>
+    <h2>Simulador</h2>
+    <button class="btn icon" id="drClose" type="button" aria-label="Cerrar"><svg class="ico"><use href="#i-close"/></svg></button>
+  </header>
+  <div class="dr-body">
+    <label class="sw"><input type="checkbox" id="swAuto" checked><span class="sw-ui"></span><span><b>Ciclo automático</b><small>Provoca fallas al azar cada 15 a 30 segundos</small></span></label>
+
+    <h3>Provocar una situación</h3>
+    <div class="scn">
+      <button type="button" data-s="normal">Volver a normal</button>
+      <button type="button" data-s="detener">Detener la correa</button>
+      <button type="button" data-s="izquierda">Desalinear a la izquierda</button>
+      <button type="button" data-s="derecha">Desalinear a la derecha</button>
+      <button type="button" data-s="angulo">Girar la correa</button>
+      <button type="button" data-s="objeto">Pasar una piedra</button>
+      <button type="button" data-s="senal">Cortar la señal</button>
+      <button type="button" data-s="calibrar">Calibrar</button>
+    </div>
+
+    <h3>Ajuste manual</h3>
+    <div class="sl"><label for="slVel">Velocidad <b id="slVelV">10,0 cm/s</b></label><input id="slVel" type="range" min="0" max="15" step="0.1" value="10"></div>
+    <div class="sl"><label for="slLat">Desvío lateral <b id="slLatV">0,0 mm</b></label><input id="slLat" type="range" min="-16" max="16" step="0.5" value="0"></div>
+    <div class="sl"><label for="slAng">Ángulo <b id="slAngV">0,0°</b></label><input id="slAng" type="range" min="-5" max="5" step="0.1" value="0"></div>
+    <p class="hint">Límites del clasificador: detenida bajo 0.8 cm/s, desvío mayor a 8 mm, ángulo mayor a 2°. Cada estado se confirma si se mantiene unos segundos.</p>
+  </div>
+</aside>
+<div class="scrim" id="scrim" hidden></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="js/sim.js"></script>
+<script src="js/remote.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

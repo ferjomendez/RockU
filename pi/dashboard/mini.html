@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pantalla RockU</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/mini.css">
+</head>
+<body>
+<div class="stage" id="stage">
+
+  <header class="bar">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 120 66" aria-hidden="true">
+        <g class="m-rock"><polygon points="8,40 14,26 30,20 42,28 40,42" /><polygon class="f" points="14,26 30,20 28,32 18,36" /></g>
+        <g class="m-rock"><polygon points="86,40 92,24 106,22 114,32 110,42" /><polygon class="f" points="92,24 106,22 100,32" /></g>
+        <polygon class="m-blue" points="47,38 50,17 66,9 81,17 79,36 63,42" />
+        <polygon class="m-blue-f" points="50,17 66,9 64,24 54,28" />
+        <polygon class="m-blue-f2" points="66,9 81,17 76,26 64,24" />
+        <path class="m-br" d="M42 12V3h9M76 3h9v9M85 36v9h-9M51 45h-9v-9" />
+        <rect class="m-belt" x="4" y="44" width="112" height="19" rx="9.5" />
+        <g class="m-wheel"><circle cx="19" cy="53.5" r="5.6"/><circle cx="46" cy="53.5" r="5.6"/><circle cx="74" cy="53.5" r="5.6"/><circle cx="101" cy="53.5" r="5.6"/></g>
+      </svg>
+      <span class="word">Rock<span>U</span></span>
+    </div>
+    <div class="links">
+      <span class="lk" id="lkPhone" data-ok="1" title="Teléfono"><i></i>Cámara</span>
+      <span class="lk" id="lkEsp" data-ok="1" title="Sensor de distancia"><i></i>Sensor</span>
+      <span class="clock" id="clock">00:00</span>
+    </div>
+  </header>
+
+  <section class="status" id="status" data-tone="ok">
+    <div class="st-main">
+      <div class="st-name" id="stName">Normal</div>
+      <div class="st-sub" id="stSub">Avanza a 10,0 cm/s</div>
+    </div>
+    <div class="st-time"><b id="stSince">00:00</b><span>en este estado</span></div>
+    <div class="belt" id="belt"></div>
+    <div class="calib" id="calib" hidden><i id="calibFill"></i></div>
+  </section>
+
+  <section class="nums">
+    <div class="num" id="nVel"><span>Velocidad</span><b id="vVel">10,0</b><em>cm/s</em></div>
+    <div class="num" id="nLat"><span>Desvío</span><b id="vLat">+0,0</b><em>mm</em></div>
+    <div class="num" id="nAng"><span>Ángulo</span><b id="vAng">+0,0</b><em>grados</em></div>
+  </section>
+
+  <section class="spark">
+    <canvas id="spark"></canvas>
+    <div class="spark-lab"><span>Velocidad, último minuto</span><span id="lastEv">Sin eventos</span></div>
+  </section>
+
+  <nav class="btns">
+    <button type="button" id="bCal"><svg class="ico"><use href="#i-target"/></svg>Calibrar</button>
+    <button type="button" id="bMute"><svg class="ico"><use href="#i-bell"/></svg><span id="bMuteTxt">Silenciar</span></button>
+    <button type="button" id="bUsb"><svg class="ico"><use href="#i-down"/></svg>Exportar</button>
+  </nav>
+
+  <div class="note" id="note" hidden></div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17h12l-1.5-2.2V10a4.5 4.5 0 0 0-9 0v4.8L6 17Zm4 2.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bell-off" viewBox="0 0 24 24"><path d="M6 17h12l-1.5-2.2V10a4.5 4.5 0 0 0-7.6-3.2M10 19.5a2 2 0 0 0 4 0M4 4l16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v10m0 0-4-4m4 4 4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><path d="M4 9V5h4M16 5h4v4M20 15v4h-4M8 19H4v-4M12 9v6M9 12h6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<script src="js/sim.js"></script>
+<script src="js/remote.js"></script>
+<script src="js/mini.js"></script>
+</body>
+</html>

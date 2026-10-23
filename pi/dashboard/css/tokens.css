@@ -1,0 +1,127 @@
+/* RockU: tokens compartidos por el panel web y la pantalla de la Pi.
+   Colores tomados del logo: tinta #0E1A25 y azul #0072EF.
+   Concepto: paneles unidos por filetes finos (sin tarjetas sueltas), un solo
+   bloque oscuro (la cámara) como protagonista, y el visor con esquinas del
+   logo como motivo estructural. */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/archivo.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* marca */
+  --ink: #0E1A25;
+  --ink-2: #162434;
+  --ink-3: #213349;
+  --blue: #0072EF;
+  --blue-hi: #3D91F5;
+  --blue-lo: #0A57B8;
+
+  /* superficies (claro) */
+  --bg: #ECF0F5;
+  --panel: #FFFFFF;
+  --panel-2: #F4F7FA;
+  --line: #D8E0EA;
+  --line-2: #E7ECF2;
+
+  /* texto */
+  --fg: #0E1A25;
+  --fg-2: #475467;
+  --fg-3: #6F7C8F;
+
+  /* acento */
+  --accent: #0072EF;
+  --accent-soft: #E5F0FE;
+  --accent-ink: #0A57B8;
+
+  /* estados */
+  --ok: #0B8A4B;       --ok-soft: #E2F4EA;
+  --stop: #D6342A;     --stop-soft: #FCE8E6;
+  --warn: #B87400;     --warn-fill: #F2A100; --warn-soft: #FFF2D6;
+  --obj: #0072EF;      --obj-soft: #E5F0FE;
+  --off: #5B6A80;      --off-soft: #E9EDF3;
+  --idle: #5B6A80;     --idle-soft: #E9EDF3;
+
+  /* cámara (siempre oscura) */
+  --cam: #0C1620;
+  --cam-2: #12202E;
+  --cam-line: #223348;
+  --cam-fg: #E8EEF6;
+  --cam-fg-2: #93A3B8;
+
+  --chart-grid: #E3E9F0;
+  --chart-line: #0072EF;
+  --chart-fill: rgba(0, 114, 239, .10);
+
+  --font: "Archivo", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #080F17;
+    --panel: #0F1A26;
+    --panel-2: #0B1520;
+    --line: #1E2D40;
+    --line-2: #172335;
+    --fg: #E8EEF6;
+    --fg-2: #A3B1C4;
+    --fg-3: #74849A;
+    --accent: #3D91F5;
+    --accent-soft: rgba(61, 145, 245, .16);
+    --accent-ink: #7DB6FA;
+    --ok: #2FC47A;   --ok-soft: rgba(47, 196, 122, .14);
+    --stop: #FF6256; --stop-soft: rgba(255, 98, 86, .15);
+    --warn: #F5B031; --warn-soft: rgba(245, 176, 49, .15);
+    --obj: #4C9AF7;  --obj-soft: rgba(76, 154, 247, .16);
+    --off: #8D9BB0;  --off-soft: rgba(141, 155, 176, .14);
+    --idle: #8D9BB0; --idle-soft: rgba(141, 155, 176, .14);
+    --cam: #070D14;
+    --cam-2: #0D1823;
+    --cam-line: #1B2A3C;
+    --chart-grid: #182536;
+    --chart-line: #4C9AF7;
+    --chart-fill: rgba(76, 154, 247, .14);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #080F17;
+  --panel: #0F1A26;
+  --panel-2: #0B1520;
+  --line: #1E2D40;
+  --line-2: #172335;
+  --fg: #E8EEF6;
+  --fg-2: #A3B1C4;
+  --fg-3: #74849A;
+  --accent: #3D91F5;
+  --accent-soft: rgba(61, 145, 245, .16);
+  --accent-ink: #7DB6FA;
+  --ok: #2FC47A;   --ok-soft: rgba(47, 196, 122, .14);
+  --stop: #FF6256; --stop-soft: rgba(255, 98, 86, .15);
+  --warn: #F5B031; --warn-soft: rgba(245, 176, 49, .15);
+  --obj: #4C9AF7;  --obj-soft: rgba(76, 154, 247, .16);
+  --off: #8D9BB0;  --off-soft: rgba(141, 155, 176, .14);
+  --idle: #8D9BB0; --idle-soft: rgba(141, 155, 176, .14);
+  --cam: #070D14;
+  --cam-2: #0D1823;
+  --cam-line: #1B2A3C;
+  --chart-grid: #182536;
+  --chart-line: #4C9AF7;
+  --chart-fill: rgba(76, 154, 247, .14);
+  color-scheme: dark;
+}
+
+/* tonos de estado: cada elemento con data-tone recibe --tone y --tone-soft */
+[data-tone="ok"]   { --tone: var(--ok);   --tone-soft: var(--ok-soft); }
+[data-tone="stop"] { --tone: var(--stop); --tone-soft: var(--stop-soft); }
+[data-tone="warn"] { --tone: var(--warn); --tone-soft: var(--warn-soft); }
+[data-tone="obj"]  { --tone: var(--obj);  --tone-soft: var(--obj-soft); }
+[data-tone="off"]  { --tone: var(--off);  --tone-soft: var(--off-soft); }
+[data-tone="idle"] { --tone: var(--idle); --tone-soft: var(--idle-soft); }
